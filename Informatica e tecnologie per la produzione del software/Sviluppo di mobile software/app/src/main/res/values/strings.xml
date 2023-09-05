@@ -1,0 +1,87 @@
+<resources>
+    <string translatable="false" name="app_name">TourApp</string>
+    <string translatable="false" name="google_maps_key">AIzaSyCtvMtbfGZZveUenzm-FCDpFaOdgXsV62s</string>
+
+
+    <string name="navigation_drawer_open">Open side menu</string>
+    <string name="navigation_drawer_close">close side menu</string>
+    <string name="saved_places">My favorite places</string>
+    <string name="home">Home</string>
+    <string name="map">Map</string>
+    <string name="preferences">Preferences</string>
+    <string name="login">Access/Registration</string>
+    <string name="logout">Logout</string>
+    <string name="str_btn_nfc">Buy ticket for %.2f€</string>
+    <string name="show_in_map">Show on map</string>
+    <string name="no_place_found">No point of interest found</string>
+    <string name="monuments">Monuments</string>
+    <string name="hotels">Hotel</string>
+    <string name="disco">Svago</string>
+    <string name="pizzerie">Pizzerias</string>
+    <string name="beach">Beach</string>
+    <string name="ice_cream">Gelaterie</string>
+    <string name="show_place">See place</string>
+    <string name="no_nfc">Nfc is not available on this device</string>
+    <string name="nfc_not_enabled">Nfc is not enabled</string>
+    <string name="buy_ticket">Ticket</string>
+    <string name="please_login">Log in first</string>
+    <string name="receive_credit">Receive credit</string>
+    <string name="guest">Guest</string>
+    <string name="creditValid">Please enter a valid credit!</string>
+    <string name="emailValid">Enter a valid email!</string>
+    <string name="add_place">Add point of interest</string>
+    <string name="save">Save</string>
+    <string name="position">Position</string>
+    <string name="description_eng">Description (English)</string>
+    <string name="description_ita">Description (Italian)</string>
+    <string name="min_chars">Enter at least %d characters</string>
+    <string name="ticket_price">Ticket cost (optional)</string>
+    <string name="place_name">Point of interest name</string>
+    <string name="category">Category</string>
+    <string name="transactions">Transactions</string>
+    <string name="image">Image</string>
+    <string name="select">Select</string>
+    <string name="user_not_found">User not found!</string>
+    <string name="you_are_here">You are here</string>
+    <string name="place_added">Place added!</string>
+    <string name="select_image">Select an image!</string>
+    <string name="less_functions">Some functions will not be accessible without GPS!</string>
+    <string name="credit">Credit: %s€</string>
+    <string name="credit_added">Updated credit!</string>
+    <string name="credit_updated">Updated credit!</string>
+    <string name="no_place_added">No place I add</string>
+    <string name="adviceNfc">Approach the device to the ticket office</string>
+    <string name="ticket_purchased">Ticket %s</string>
+    <string name="received_credit">Credit top-up</string>
+    <string name="can_enter">Purchased ticket! Access allowed! </string>
+    <string name="cannot_enter">Error in ticket purchase. Try again later</string>
+    <string name="logged_out">You logged out</string>
+    <string name="login_failed">Login failed!</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="add_credit">Add credit</string>
+    <string name="place_added_pref">Place added to favorites!</string>
+    <string name="place_elim_by_pref">Place removed from favorites!</string>
+    <string name="no_transactions">No transaction executed</string>
+    <string name="accreditation">Accreditation for ticket purchase %s %s</string>
+    <string name="welcome">Welcome! </string>
+    <string name="main_menu">Main menu</string>
+    <string name="account">Account</string>
+    <string name="administrator">Administrator</string>
+    <string name="select_category">Select a category</string>
+    <string name="comments">Comments</string>
+    <string name="ticket_info">A ticket is available. To purchase it click on the button below and approach your decision to that of the person in charge of the point of interest. The transaction will take place automatically.</string>
+    <string name="wait_for_location">Wait while we look for points of interest around you</string>
+    <string name="select_stars">Give a rating</string>
+    <string name="cant_comment">You have already sent a comment</string>
+    <string name="comment_sent">Comment sent!</string>
+    <string name="inserisci_un_commento">post a comment</string>
+    <string name="invia">Send</string>
+    <string name="vedi_tutti">See all</string>
+    <string name="no_comments_message">There is no comment yet.</string>
+    <string name="gps_message_1">Without GPS some features of the application will not be available! Activate the GPS to use TourApp to the best of its potential.</string>
+    <string name="gps_message_2">Activate high precision mode to unlock all TourApp features.</string>
+    <string name="warning">Caution</string>
+    <string name="gps_info">TourApp requires GPS location to show points of interest near you.</string>
+
+</resources>
+

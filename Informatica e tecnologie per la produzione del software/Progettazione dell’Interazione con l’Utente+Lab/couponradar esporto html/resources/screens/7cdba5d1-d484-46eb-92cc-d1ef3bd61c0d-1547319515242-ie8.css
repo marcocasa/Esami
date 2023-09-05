@@ -1,0 +1,55 @@
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Ellipse_1 {
+  rotation: 0.0;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Button_1 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Text_1 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Ellipse_2 {
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  rotation: 0.0;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Image_43 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Notification {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Notification-Number {
+  rotation: 0.0;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.devMobile #jim-container .ui-page {
+  overflow-x: hidden;
+}
+.non_jim_mobile #simulation {
+  overflow-x: hidden;
+}
+.web #simulation {
+  overflow-x: hidden;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}

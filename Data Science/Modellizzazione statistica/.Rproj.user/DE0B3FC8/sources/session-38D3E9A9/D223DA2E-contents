@@ -1,0 +1,35 @@
+library(Matrix)
+library(jpeg)
+foto <- readJPEG('images/foto.jpg')
+
+r <- foto[ , , 1]
+g <- foto[ , , 2]
+b <- foto[ , , 3]
+
+r.rank <- rankMatrix(r)
+g.rank <- rankMatrix(g)
+b.rank <- rankMatrix(b)
+
+sprintf("Rango della matrice relativa al canale rosso: %i", r.rank)
+sprintf("Rango della matrice relativa al canale verde: %i", g.rank)
+sprintf("Rango della matrice relativa al canale blu: %i", b.rank)
+
+foto.r.svd <- svd(r)
+foto.g.svd <- svd(g)
+foto.b.svd <- svd(b)
+
+rgb.svds <- list(foto.r.svd, foto.g.svd, foto.b.svd)
+num_sigma <- c(3, 5)
+k <- 10
+foto_compressa <- sapply(rgb.svds, function(i) {
+  foto_troncata <- i$u[,1:k] %*% diag(i$d[1:k]) %*% t(i$v[,1:k])
+}, simplify = 'array')
+
+print(rankMatrix(foto_compressa[, , 1]))
+print(rankMatrix(foto_compressa[, , 2]))
+print(rankMatrix(foto_compressa[, , 3]))
+for (r in num_sigma) {
+  
+  writeJPEG(foto_compressa, paste('images/foto_compressa/foto_compressa_con_',
+                                  r, '_sigma.jpg', sep=''))
+}

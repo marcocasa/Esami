@@ -1,0 +1,51 @@
+Provincia;Comune;Nome stazione;Tipo zona;Tipo stazione;Valore medio annuo;Giorni di superamento del valore limite giornaliero;Massimo;Latitudine;Longitudine
+Foggia;Lucera;Azienda Russo;R;F;20;16;93;41546806;15451352
+Foggia;Manfredonia;Manfredonia VIA DEI MANDORLI;S;T;17;6;88;41629329;15909637
+Foggia;Monte Sant'Angelo;Monte S. Angelo SUOLO CIUFFREDA;R;F;14;6;84;41666106;15945254
+Foggia;San Severo;Posta del Principe;R;F;21;16;95;41632761;1538772
+Bari;Altamura;ALTAMURA;S;T;20;8;84;40827865;16560195
+Bari;Bari;Caldarola;U;T;22;12;104;4111354;16888061
+Bari;Bari;CAVOUR;U;T;24;14;116;41122269;16872553
+Bari;Bari;KENNEDY;U;F;22;10;110;41099594;16858905
+Bari;Bari;CUS;S;F;20;9;112;41134717;16845267
+Bari;Casamassima;CASAMASSIMA;S;F;21;12;98;40952176;16919918
+Bari;Modugno;EN02 - ass. ecologia;S;I;23;11;104;41137412;16767041
+Bari;Modugno;EN03 - VIGILI URBANI;U;I;21;11;96;41087222;16781672
+Bari;Modugno;EN04 - SAN PAOLO;S;I;24;12;115;41115001;16788057
+Bari;Molfetta;molfetta VERDI;U;T;23;11;108;41201095;16605248
+Bari;Monopoli;MONOPOLI;S;T;20;14;113;40950192;1728948
+Bari;Monopoli;Monopoli Italgreen;S;T;20;11;102;40961573;17284265
+Taranto;Grottaglie;Grottaglie;S;F;19;8;133;40537776;17423879
+Taranto;Martina Franca;Martina Franca;U;T;22;11;96;40700826;17331939
+Taranto;Massafra;Massafra;U;T;22;8;99;40593756;17116682
+Taranto;Taranto;Taranto CISI;S;I;17;6;81;40520934;17253416
+Taranto;Taranto;taranto SAN VITO;U;F;22;14;88;40423328;17225272
+Taranto;Taranto;taranto MACHIAVELLI;S;I;23;14;81;40488608;17225823
+Taranto;Taranto;taranto ADIGE;U;T;21;10;79;40460553;17263602
+Taranto;Taranto;TALSANO;U;F;19;6;72;40411943;17283879
+Taranto;Taranto;Taranto ARCHIMEDE;S;I;21;8;79;40494441;17233048
+Taranto;Statte;taranto WIND;S;T;20;11;98;40526111;17173611
+Taranto;Statte;STATTE;S;I;18;10;93;40562499;17203325
+Brindisi;Brindisi;Brindisi VIA TARANTO;U;T;22;10;102;40644;17947996
+Brindisi;Brindisi;brindisi VIA DEI MILLE;S;T;17;6;79;40638757;17938152
+Brindisi;Brindisi;brindisi VIA MAGELLANO;S;F;20;9;94;40651686;17943627
+Brindisi;Brindisi;brindisi SISRI;S;I;19;12;104;40625551;17975827
+Brindisi;Brindisi;PERRINO;S;F;20;13;92;4063138;17954711
+Brindisi;Brindisi;TERMINAL PASSEGGERI;S;I;17;8;83;40647432;17961687
+Brindisi;Ceglie Messapica;Ceglie Messapica;S;F;20;8;91;40649161;175125
+Brindisi;Cisternino;Cisternino;R;F;15;7;82;40742777;17415831
+Brindisi;Mesagne;Mesagne;S;F;23;16;93;40565995;17807998
+Brindisi;San Pancrazio Salentino;S. Pancrazio Salentino;S;F;24;17;86;40422993;17845999
+Brindisi;San Pietro Vernotico;S. Pietro VERNOTICO;S;I;23;19;117;40485998;18005994
+Brindisi;Torchiarolo;TORCHIAROLO;S;I;29;31;107;40487999;18053991
+Brindisi;Torchiarolo;Torchiarolo ENEL;S;F;20;10;88;40489448;18047226
+Lecce;Arnesano;ARNESANO - Riesci;S;F;21;9;88;40346269;18095072
+Lecce;Campi Salentina;Campi Salentina;S;F;23;14;88;40397508;18026509
+Lecce;Galatina;La Porta;S;I;23;14;92;40166948;18174726
+Lecce;Guagnano;GUAGNANO - villa baldassarri;S;F;20;8;94;40418518;17964473
+Lecce;Lecce;LECCE - S. M. Cerrate;R;F;19;10;90;40459689;18116384
+Lecce;Lecce;GARIGLIANO;U;T;20;8;83;40364457;18174327
+Lecce;Lecce;LIBERTINI;U;T;23;13;102;40351945;18176671
+Lecce;Surbo;Surbo ENEL;R;F;18;8;80;4041194;18120835
+Barletta-Andria-Trani;Andria;ANDRIA;U;T;22;12;86;41232303;16303109
+Barletta-Andria-Trani;Barletta;stadio casardi;U;F;25;16;110;41316669;16286114

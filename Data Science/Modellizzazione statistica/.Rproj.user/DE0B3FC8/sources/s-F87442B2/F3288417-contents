@@ -1,0 +1,35 @@
+library(jpeg)
+library(Matrix)
+foto <- readJPEG('images/foto.jpg')
+ncol(foto)
+nrow(foto)
+grid::grid.raster(foto)
+
+r <- foto[ , , 1]
+g <- foto[ , , 2]
+b <- foto[ , , 3]
+
+
+k <- rankMatrix(foto)
+c <- rankMatrix(g)
+e <- rankMatrix(b)
+
+k
+c
+e
+
+
+foto.r.svd <- svd(r)
+foto.g.svd <- svd(g)
+foto.b.svd <- svd(b)
+
+rgb.svds <- list(foto.r.svd, foto.g.svd, foto.b.svd)
+ranks <- c(3, 5, 10, 25, 35, 70, 100)
+for (r in ranks) {
+  foto_compressa <- sapply(rgb.svds, function(i) {
+    foto.compress <- i$u[,1:r] %*% diag(i$d[1:r]) %*% t(i$v[,1:r])
+  }, simplify = 'array')
+  
+  writeJPEG(foto_compressa, paste('images/foto_compressa/foto_compressa_con_rank_', r, '.jpg', sep=''))
+}
+

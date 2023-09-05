@@ -1,0 +1,53 @@
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Ellipse_1 {
+  stroke-width: 4px;
+  stroke: #404040;
+  -ms-transform: rotate(0.0deg);
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Button_1 {
+  border-top-width: 0px;
+  border-top-style: solid;
+  border-top-color: #08AE9E;
+  border-right-width: 0px;
+  border-right-style: solid;
+  border-right-color: #08AE9E;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
+  border-bottom-color: #08AE9E;
+  border-left-width: 0px;
+  border-left-style: solid;
+  border-left-color: #08AE9E;
+  -ms-transform: rotate(0.0deg);
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Text_1 {
+  -ms-transform: rotate(0.0deg);
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Ellipse_2 {
+  stroke-width: 4px;
+  stroke: #404040;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  -ms-transform: rotate(0.0deg);
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Image_43 {
+  -ms-transform: rotate(0.0deg);
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Notification {
+  -ms-transform: rotate(0.0deg);
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d #s-Notification-Number {
+  -ms-transform: rotate(0.0deg);
+}
+.devMobile #jim-container .ui-page {
+  overflow-x: hidden;
+}
+.non_jim_mobile #simulation {
+  overflow-x: hidden;
+}
+.web #simulation {
+  overflow-x: hidden;
+}
+#s-7cdba5d1-d484-46eb-92cc-d1ef3bd61c0d > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}

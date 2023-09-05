@@ -1,0 +1,27 @@
+Provincia;Comune;Nome stazione;Tipo_zona;Tipo_stazione;Valore medio annuo;Massimo;Giorni di superamento del valore limite giornaliero;Latitudine;Longitudine
+Foggia;Lucera;Azienda Russo;R;F;13;54;89;41546806;15451352
+Foggia;San Severo;Posta del Principe;R;F;13;64;107;41632761;1538772
+Bari;Altamura;ALTAMURA;S;T;11;40;48;40827865;16560195
+Bari;Bari;Caldarola;U;T;12;53;70;4111354;16888061
+Bari;Bari;CAVOUR;U;T;13;52;95;41122269;16872553
+Bari;Casamassima;CASAMASSIMA;S;F;12;56;73;40952176;16919918
+Bari;Modugno;EN02 - ass. ecologia;S;I;13;52;96;41137412;16767041
+Bari;Monopoli;MONOPOLI;S;T;11;51;59;40950192;1728948
+Bari;Monopoli;Monopoli Italgreen;S;T;10;44;40;40961573;17284265
+Taranto;Taranto;Taranto CISI;S;I;9;26;39;40520934;17253416
+Taranto;Taranto;taranto MACHIAVELLI;S;I;11;66;62;40488608;17225823
+Taranto;Taranto;taranto ADIGE;U;T;11;31;48;40460553;17263602
+Taranto;Taranto;Taranto ARCHIMEDE;S;I;11;30;49;40494441;17233048
+Brindisi;Brindisi;Brindisi VIA TARANTO;U;T;11;41;65;40644;17947996
+Brindisi;Brindisi;brindisi VIA MAGELLANO;S;F;11;40;59;40651686;17943627
+Brindisi;Brindisi;TERMINAL PASSEGGERI;S;I;10;38;42;40647432;17961687
+Brindisi;Ceglie Messapica;Ceglie Messapica;S;F;16;43;119;40649161;175125
+Brindisi;Torchiarolo;TORCHIAROLO;S;I;18;73;149;40487999;18053991
+Brindisi;Torchiarolo;Torchiarolo ENEL;S;F;12;43;77;40489448;18047226
+Lecce;Campi Salentina;Campi Salentina;S;F;13;47;101;40397508;18026509
+Lecce;Galatina;La Porta;S;I;13;84;89;40166948;18174726
+Lecce;Lecce;LECCE - S. M. Cerrate;R;F;10;35;43;40459689;18116384
+Lecce;Lecce;GARIGLIANO;U;T;11;38;56;40364457;18174327
+Lecce;Lecce;LIBERTINI;U;T;13;42;89;40351945;18176671
+Barletta-Andria-Trani;Andria;ANDRIA;U;T;13;50;85;41232303;16303109
+Barletta-Andria-Trani;Barletta;stadio casardi;U;F;12;55;84;41316669;16286114

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#9E9E9E</color>
+ 
+    <color name="colorPrimaryLight">#eeeeee</color>
+
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#607D8B</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="yellow">#ffdb28</color>
+
+
+    <!-- più si va avanti col numero e più il colore diventa scuro -->
+
+    <color name="image_dark_overlay">#66000000</color>
+
+    <color name="grey1">#f2f2f2</color>
+    <color name="grey2">#e6e6e6</color>
+    <color name="grey3">#666666</color>
+    <color name="grey4">#37474F</color>
+    <color name="grey5">#263238</color>
+
+</resources>

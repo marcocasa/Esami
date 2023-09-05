@@ -1,0 +1,50 @@
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c #s-Image_1 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c #s-Rectangle_1 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c #s-raised_Button {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c #s-Ellipse_4 {
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  rotation: 0.0;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c #s-Notification {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c #s-Notification-Number {
+  rotation: 0.0;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.devMobile #jim-container .ui-page {
+  overflow-x: hidden;
+}
+.non_jim_mobile #simulation {
+  overflow-x: hidden;
+}
+.web #simulation {
+  overflow-x: hidden;
+}
+#s-204408b9-3022-44ae-9b3e-fe98ea58a65c > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}

@@ -1,0 +1,33 @@
+#s-42caed59-35ad-42f3-8d1f-dedc05c1384f #s-Image_43 {
+  -ms-transform: rotate(0.0deg);
+}
+#s-42caed59-35ad-42f3-8d1f-dedc05c1384f #s-Ellipse_3 {
+  stroke-width: 4px;
+  stroke: #404040;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  -ms-transform: rotate(0.0deg);
+}
+#s-42caed59-35ad-42f3-8d1f-dedc05c1384f #s-Image_1 {
+  -ms-transform: rotate(0.0deg);
+}
+#s-42caed59-35ad-42f3-8d1f-dedc05c1384f #s-Notification {
+  -ms-transform: rotate(0.0deg);
+}
+#s-42caed59-35ad-42f3-8d1f-dedc05c1384f #s-Notification-Number {
+  -ms-transform: rotate(0.0deg);
+}
+.devMobile #jim-container .ui-page {
+  overflow-x: hidden;
+}
+.non_jim_mobile #simulation {
+  overflow-x: hidden;
+}
+.web #simulation {
+  overflow-x: hidden;
+}
+#s-42caed59-35ad-42f3-8d1f-dedc05c1384f > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}

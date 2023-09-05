@@ -1,0 +1,538 @@
+---
+title: "Singular Value Decomposition"
+author: "Marco Casamassima 730346"
+output:
+  pdf_document: 
+    number_sections: true
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Definizione
+
+La Decomposizione a Valori Singolari (SVD) è una tecnica di algebra lineare che permette di scomporre una qualsiasi matrice nel prodotto di tre matrici (Figura 1). In particolare, sia $\mathbf{A}\in\mathbb{R}^{n\times m}$ (o $\mathbf{A}\in\mathbb{C}^{n\times m}$) con $rank(\mathbf{A})=k<=min(n,m)$, è possibile scomporla in
+
+$$
+\mathbf{A}=\mathbf{U\Sigma V}^{T}
+$$
+
+(In seguito si considereranno solo matrici reali).
+
+Dove:
+
+* $\mathbf{U}=\begin{bmatrix} \mathbf{u}_1|\mathbf{u}_2|...|\mathbf{u}_n\\ \end{bmatrix}\in\mathbb{R}^{n\times n}$ ortogonale, ossia $\mathbf{u}_i\in\mathbb{R}^n\;\mbox{t.c}$ 
+  $$
+  \mathbf{u}_i^T*\mathbf{u}_j=
+  \begin{cases}
+  1 & se\; i=j\\
+  0 & se\; i \neq j
+  \end{cases}
+  $$ 
+  i $\mathbf{u}_i$ vengono chiamati **vettori singolari sinistri** di $\mathbf{A}$;  
+
+* $\mathbf{\Sigma} = \left[ \begin{array}{c|c} \mathbf{\Sigma}_k & \mathbf{0}_{k\times (m-k)} \\ \hline \mathbf{0}_{(n-k)\times k} & \mathbf{0}_{(n-k)\times (m-k)} \end{array} \right]\in\mathbb{R}^{n\times m}$
+    con $\mathbf{\Sigma}_k=\begin{bmatrix} \sigma_1 & … & 0 \\ … & … & … \\ 0 & … & \sigma_k \\ \end{bmatrix}\in\mathbb{R}^{k\times k}$ diagonale con i $k$ elementi $\sigma_1 \ge...\ge \sigma_k >0$.
+    i $\sigma_i$ vengono chiamati **valori singolari** di $\mathbf{A}$. Inoltre, $\Sigma$ è unicamente determinata;  
+
+* $\mathbf{V}=\begin{bmatrix}\mathbf{v}_1|\mathbf{v}_2|...|\mathbf{v}_m\end{bmatrix}\in\mathbb{R}^{m\times m}$ ortogonale, ossia $\mathbf{v}_i\in\mathbb{R}^m \;\mbox{t.c}$ 
+  $$
+  \mathbf{v}_i^T*\mathbf{v}_j=
+  \begin{cases}
+  1 & se\; i=j\\
+  0 & se\; i \neq j
+  \end{cases}
+  $$
+  i $\mathbf{v}_i$ vengono chiamati **vettori singolari destri** di $\mathbf{A}$.  
+
+**Osservazione**:  
+I vettori singolari sinistri e destri hanno un comportamente simile a quello degli autovettori. Infatti:
+$$
+\mathbf{A}=\mathbf{U\Sigma V}^T
+$$
+$$
+\mathbf{AV}=\mathbf{U\Sigma V}^T\mathbf{V}=\mathbf{U\Sigma}
+$$
+$$
+\Rightarrow \mathbf{Av}_i=\sigma_i\mathbf{u}_i \ \ \ \ \forall i=1...k
+$$  
+$$
+\mathbf{A}^T=\mathbf{V\Sigma U}^T
+$$
+$$
+\mathbf{A}^T\mathbf{U}=\mathbf{V\Sigma U}^T\mathbf{U}=\mathbf{V\Sigma}
+$$
+$$
+\Rightarrow \mathbf{A}^T\mathbf{u}_i=\sigma_i\mathbf{v}_i \ \ \ \ \forall i=1...k
+$$  
+
+Come visto in precedenza, la matrice $\mathbf{\Sigma}$ è formata da $\sigma_1, \, …, \, \sigma_k \neq 0$ e $\sigma_i=0$ per $i>k$. Di conseguenza, considerando solo le prime $k$ colonne di $\mathbf{U}$ e le
+prime $k$ righe di $\mathbf{V}^T$, $\mathbf{A}$ può essere decomposta come
+
+$$
+  \mathbf{A}=\mathbf{U}_{n\times k}\mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T=\\
+$$ 
+$$
+  =\begin{bmatrix} \mathbf{u}_1|\mathbf{u}_2|...|\mathbf{u}_k \end{bmatrix}
+  \begin{bmatrix} \sigma_1 & … & 0 \\ … & … & … \\ 0 & … & \sigma_k \end{bmatrix}
+  \begin{bmatrix} \mathbf{v}_1^T \\ ... \\ \mathbf{v}_k^T\end{bmatrix}=\\
+$$ 
+$$
+  =\sum_{i=1}^k\sigma_i\mathbf{u}_i\mathbf{v}_i^T
+$$ 
+Questa variante della SVD è chiamata **Compact SVD** (figura 2). 
+Dalla relazione $\mathbf{Av}_i=\sigma_i\mathbf{u}_i$ risulta che, dopo aver calcolato le matrici $\mathbf{V}_{m\times k}$ e $\mathbf{\Sigma}_k$ è possibile calcolare le colonne di $\mathbf{U}_{n\times k}$ attraverso la relazione $\mathbf{u}_i=\mathbf{Av}_i\sigma_i$.   
+**Nota**:  
+Nel caso in cui $k=n=m$, la Compact SVD è uguale alla SVD classica.  
+
+
+```{r echo=FALSE, out.width="80%", fig.align='center', fig.cap="Visualizzazione della SVD di una matrice di rank k."}
+knitr::include_graphics("images/svd_rappresentazione.png")
+```
+
+```{r echo=FALSE, out.width="80%", fig.align='center', fig.cap="Visualizzazione della Compact SVD di una matrice di rank k."}
+knitr::include_graphics("images/compact_svd_rappresentazione.png")
+```
+
+```{r echo=FALSE, out.width="80%", fig.align='center', fig.cap="Visualizzazione della Truncated SVD di una matrice di rank k con una di rank r<k."}
+knitr::include_graphics("images/truncated_svd_rappresentazione.png")
+```
+
+## Calcolo di $\mathbf{U}, \mathbf{\Sigma}$ e $\mathbf{V}$
+
+Sia $\mathbf{A}\in\mathbb{R}^{n\times m}$ con
+$rank(\mathbf{A})=k\le min(n,m)$. Le tre matrici
+$\mathbf{U}, \mathbf{\Sigma}$ e $\mathbf{V}$ utilizzate nella
+Decomposizione a Valori Singolari possono essere calcolate considerando
+le matrici $\mathbf{A}^T\mathbf{A}$ e $\mathbf{A}\mathbf{A}^T$:
+
+- Le colonne di $\mathbf{U}$ sono gli autovettori della matrice
+  $\mathbf{A}\mathbf{A}^T$.  
+    
+  **Dimostrazione**  
+    Si consideri $\mathbf{A}\mathbf{A}^T$ e si applichi la SVD su $\mathbf{A}$   
+    $$
+      \mathbf{A} \mathbf{A}^T=(\mathbf{U\Sigma} \mathbf{V}^T)(\mathbf{U\Sigma} \mathbf{V}^T)^T=
+    $$   
+    $$
+      =\mathbf{U\Sigma} \mathbf{V}^T \mathbf{V} \mathbf{\Sigma}^T \mathbf{U}^T=  
+    $$   
+    $\mathbf{V}$ è ortogonale, quindi  
+    $$
+      =\mathbf{U\Sigma} \mathbf{\Sigma}^T \mathbf{U}^T=
+    $$  
+    $$
+      =\mathbf{U} \left[ \begin{array}{c|c} \mathbf{\Sigma}_k & \mathbf{0}_{k\times (m-k)} \\ \hline \mathbf{0}_{(n-k)\times k} & \mathbf{0}_{(n-k)\times (m-k)} \end{array} \right]\left[ \begin{array}{c|c} \mathbf{\Sigma}_k & \mathbf{0}_{k\times (n-k)} \\ \hline \mathbf{0}_{(m-k)\times k} & \mathbf{0}_{(m-k)\times (n-k)} \end{array} \right]\mathbf{U}^T=
+    $$    
+    $$
+      =\mathbf{U}\left[ \begin{array}{c|c} \mathbf{\Sigma}_k\mathbf{\Sigma}_k & \mathbf{0}_{k\times (n-k)} \\ \hline \mathbf{0}_{(n-k)\times k} & \mathbf{0}_{(n-k)\times (n-k)} \end{array} \right]\mathbf{U}^T
+      $$  
+    $\mathbf{A}\mathbf{A}^T$ è quindi simile ad una matrice diagonale, ossia
+    $\left[ \begin{array}{c|c} \mathbf{\Sigma}_k\mathbf{\Sigma}_k & \mathbf{0}_{k\times (n-k)} \\ \hline \mathbf{0}_{(n-k)\times k} & \mathbf{0}_{(n-k)\times (n-k)} \end{array} \right]$,
+    di conseguenza i suoi autovettori saranno le colonne di $\mathbf{U}$.
+
+- Le colonne di $\mathbf{V}$ sono gli autovettori della matrice
+  $\mathbf{A}^T\mathbf{A}$.  
+    
+  **Dimostrazione**  
+    Si consideri $\mathbf{A}^T\mathbf{A}$ e si applichi la SVD su
+    $\mathbf{A}$
+    $$
+      \mathbf{A}^T\mathbf{A}=(\mathbf{U\Sigma} \mathbf{V}^T)^T(\mathbf{U\Sigma} \mathbf{V}^T)=
+    $$  
+    $$
+    =\mathbf{V}\mathbf{\Sigma}^T \mathbf{U}^T\mathbf{U} \mathbf{\Sigma} \mathbf{V}^T=\\
+    $$  
+    $\mathbf{U}$ è ortogonale, quindi\
+    $$
+    =\mathbf{V}\mathbf{\Sigma}^T  \mathbf{\Sigma} \mathbf{V}^T=
+    $$\
+    $$
+    =\mathbf{V}
+      \left[ \begin{array}{c|c} \mathbf{\Sigma}_k & \mathbf{0}_{k\times (n-k)} \\ \hline \mathbf{0}_{(m-k)\times k} & \mathbf{0}_{(m-k)\times (n-k)} \end{array} \right]
+      \left[ \begin{array}{c|c} \mathbf{\Sigma}_k & \mathbf{0}_{k\times (m-k)} \\ \hline \mathbf{0}_{(n-k)\times k} & \mathbf{0}_{(n-k)\times (m-k)} \end{array} \right]
+      \mathbf{U}^T=
+    $$\
+    $$
+    =\mathbf{V}\left[ \begin{array}{c|c} \mathbf{\Sigma}_k\mathbf{\Sigma}_k & \mathbf{0}_{k\times (m-k)} \\ \hline \mathbf{0}_{(m-k)\times k} & \mathbf{0}_{(m-k)\times (m-k)} \end{array} \right]\mathbf{V}^T
+    $$  
+    $\mathbf{A}^T\mathbf{A}$ è quindi simile ad una matrice diagonale, ossia
+    $\left[ \begin{array}{c|c} \mathbf{\Sigma}_k\mathbf{\Sigma}_k & \mathbf{0}_{k\times (m-k)} \\ \hline \mathbf{0}_{(m-k)\times k} & \mathbf{0}_{(m-k)\times (m-k)} \end{array} \right]$,
+    di conseguenza i suoi autovettori saranno le colonne di
+    $\mathbf{V}$.
+- Sulla diagonale di $\mathbf{\Sigma}$ sono presenti le radici quadrate degli autovalori di $\mathbf{A}^T\mathbf{A}$ (e $\mathbf{A}^T\mathbf{A}$).  
+  
+  **Dimostrazione**  
+    Come dimostrato nei precedenti due punti, $\mathbf{A}^T\mathbf{A}$ e $\mathbf{A}\mathbf{A}^T$ sono rispettivamente simili alle matrici
+    $\left[ \begin{array}{c|c} \mathbf{\Sigma}_k\mathbf{\Sigma}_k & \mathbf{0}_{k\times (n-k)} \\ \hline \mathbf{0}_{(n-k)\times k} & \mathbf{0}_{(n-k)\times (n-k)} \end{array} \right]$
+    e
+    $\left[ \begin{array}{c|c} \mathbf{\Sigma}_k\mathbf{\Sigma}_k & \mathbf{0}_{k\times (m-k)} \\ \hline \mathbf{0}_{(m-k)\times k} & \mathbf{0}_{(m-k)\times (m-k)} \end{array} \right]$,
+    e pertanto ne condividono gli autovalori, ossia gli elementi sulla diagonale principale.
+
+## Sottospazi fondamentali
+
+La Decomposizione a Valori Singolari permette di rappresentare i quattro spazi fondamentali associati alle righe e alle colonne di $\mathbf{A}$ ($Null(\mathbf{A})$, $Null(\mathbf{A}^T)$, $Range(\mathbf{A})$ e
+$Range(\mathbf{A}^T)$) attraverso nuove basi ortonormali.
+
+Sia $\mathbf{A}\in\mathbb{R}^{n\times m}$ con
+$rank(\mathbf{A})=k<=min(n,m)$:
+
+- $Null(\mathbf{A})=\{\mathbf{x}\in\mathbb{R}^{m}|\mathbf{Ax}=\mathbf{0}_n\}=span\{\mathbf{v}_{k+1}, \mathbf{v}_{k+2},...,\mathbf{v}_m\}$.  
+    **Dimostrazione**  
+    Sia $\mathbf{x}\in\mathbb{R}^{m}\;\mbox{t.c}\; \mathbf{x}\in Null(\mathbf{A})$.
+    Quindi,
+    $$
+    \mathbf{Ax}=\mathbf{0}_n
+    $$
+    $$
+    \mathbf{U}_{n\times k}\mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T\mathbf{x}=\mathbf{0}_n
+    $$
+    Poiché $\mathbf{U}_{n\times k}$ è ortonormale,
+    $\exists \mathbf{U}^{-1}=\mathbf{U}^T$
+    $$
+    \mathbf{U}_{k\times n}^T\mathbf{U}_{n\times k}\mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $$
+    \mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $det(\mathbf{\Sigma}_k)=\mathbf{\sigma}_1\mathbf{\sigma}_2…\mathbf{\sigma}_k\neq0 \iff \exists\mathbf{\Sigma}^{-1}_k$
+    $$
+    \mathbf{\Sigma}^{-1}_k\mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $$
+    \mathbf{V}_{k\times m}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $$
+    \begin{bmatrix} \mathbf{v}_1^T \\ 
+    ... \\ 
+    \mathbf{v}_k^T\end{bmatrix}
+    \mathbf{x}=\mathbf{0}_k
+    \iff
+    \forall i=1...k\;\;  \mathbf{v}_i^T\mathbf{x}=0 \implies \mathbf{x}\bot\mathbf{v}_i^T
+    $$
+    Di conseguenza, poiché $\forall i=1…m$ i $\mathbf{v}_i$ sono ortonormali tra loro e $dim(Null(\mathbf{A}))=m-k$, necessariamente $\mathbf{x}\in span\{\mathbf{v}_{k+1}, \mathbf{v}_{k+2},...,\mathbf{v}_m\}$.
+
+- $Null(\mathbf{A}^T)=\{\mathbf{x}\in\mathbb{R}^{n}|\mathbf{A}^T\mathbf{x}=\mathbf{0}_m\}=span\{\mathbf{u}_{k+1}, \mathbf{u}_{k+2},...,\mathbf{u}_n\}$.  
+    
+  **Dimostrazione**
+    Sia $\mathbf{x}\in\mathbb{R}^{n}\;\mbox{t.c}\; \mathbf{x}\in Null(\mathbf{A}^T)$. Quindi,
+    $$
+    \mathbf{A}^T\mathbf{x}=\mathbf{0}_m
+    $$
+    $$
+    \mathbf{V}_{m\times k}\mathbf{\Sigma}_k\mathbf{U}_{k\times n}^T\mathbf{x}=\mathbf{0}_m
+    $$
+    Poiché $\mathbf{V}_{m\times k}$ è ortonormale, $\exists \mathbf{V}^{-1}=\mathbf{V}^T$
+    $$
+    \mathbf{V}_{k\times m}^T\mathbf{V}_{m\times k}\mathbf{\Sigma}_k\mathbf{U}_{k\times n}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $$
+    \mathbf{\Sigma}_k\mathbf{U}_{k\times n}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $det(\mathbf{\Sigma}_k)=\mathbf{\sigma}_1\mathbf{\sigma}_2…\mathbf{\sigma}_k\neq0 \iff \exists\mathbf{\Sigma}^{-1}_k$
+    $$
+     \mathbf{\Sigma}^{-1}_k\mathbf{\Sigma}_k\mathbf{U}_{k\times n}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $$
+     \mathbf{U}_{k\times n}^T\mathbf{x}=\mathbf{0}_k
+    $$
+    $$
+     \begin{bmatrix} \mathbf{u}_1^T \\ 
+     ... \\ 
+     \mathbf{u}_k^T\end{bmatrix}
+     \mathbf{x}=\mathbf{0}
+     \iff
+     \forall i=1...k\;\;  \mathbf{u}_i^T\mathbf{x}=0 \implies \mathbf{x}\bot\mathbf{u}_i^T
+    $$
+    Di conseguenza, poiché $\forall i=1…n$ i $\mathbf{u}_i$ sono ortonormali tra loro e $dim(Null(\mathbf{A}^T))=n-k$, necessariamente $\mathbf{x}\in span\{\mathbf{u}_{k+1}, \mathbf{u}_{k+2},...,\mathbf{u}_n\}$.
+
+- $Range(\mathbf{A})=\{\mathbf{y}\in\mathbb{R}^{n}|\exists\mathbf{x}\in\mathbb{R}^m \; \mbox{t.c} \; \mathbf{Ax}=\mathbf{y}\}=span\{\mathbf{u}_1,\mathbf{u}_2,...,\mathbf{u}_k\}$.  
+  
+  **Dimostrazione**
+    Sia $\mathbf{y}\in\mathbb{R}^{n}\;\mbox{t.c}$ 
+    $$
+    \mathbf{y}=\mathbf{Ax}=
+    $$ 
+    $$
+    =\mathbf{U}_{n\times k}\mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T\mathbf{x}=\\
+    $$ 
+    Sia $\mathbf{z}=\mathbf{\Sigma}_k\mathbf{V}_{k\times m}^T\mathbf{x}$, $\mathbf{z}\in\mathbb{R}^k$
+    $$
+    =\mathbf{U}_{n\times k}\mathbf{z}=
+    =\mathbf{u}_1z_1+...+\mathbf{u}_kz_k
+      $$ Quindi
+    $\mathbf{y}\in span\{\mathbf{u}_1,\mathbf{u}_2,...,\mathbf{u}_k\}$.
+
+- $Range(\mathbf{A}^T)=\{\mathbf{y}\in\mathbb{R}^{m}|\exists\mathbf{x}\in\mathbb{R}^n \; \mbox{t.c} \; \mathbf{A}^T\mathbf{x}=\mathbf{y}\}=span\{\mathbf{v}_1,\mathbf{v}_2,...,\mathbf{v}_k\}$.  
+
+  **Dimostrazione**  
+    Sia $\mathbf{y}\in\mathbb{R}^{m}\;\mbox{t.c}$
+    $$
+    \mathbf{y}=\mathbf{A}^T\mathbf{x}=
+    $$ 
+    $$
+    =\mathbf{V}_{m\times k}\mathbf{\Sigma}_k\mathbf{U}_{k\times n}^T\mathbf{x}=
+    $$ 
+    Sia $\mathbf{z}=\mathbf{\Sigma}_k\mathbf{U}_{k\times n}^T\mathbf{x}$, $\mathbf{z}\in\mathbb{R}^k$
+    $$
+    =\mathbf{V}_{m\times k}\mathbf{z}=\\
+    =\mathbf{v}_1z_1+...+\mathbf{v}_kz_k
+    $$ 
+    Quindi $\mathbf{y}\in span\{\mathbf{v}_1,\mathbf{v}_2,...,\mathbf{v}_k\}$.  
+    
+
+## Teorema di Eckart-Young
+
+Le principali applicazioni della Decomposizione a Valori Singolari provengono dall'utilizzo del teorema di Eckart-Young, il quale afferma che la Decomposizione a Valori Singolari, ottenuta scartando tutti i valori
+singolari più grandi di $\sigma_r$ e i corrispondenti vettori singolari destri e sinistri, è la migliore approssimazione di rank $r$ della matrice originale, con $\sigma_r$ minore del rank della matrice. In particolare:   
+Siano $\mathbf{A}\in\mathbb{R}^{n\times m}$ con $rank(\mathbf{A})=k\leq min(n,m)$, $r\in \mathbb{N}$ t.c $r<k$ e $\mathbf{B}\in\mathbb{R}^{n\times m}$ con $rank(\mathbf{B})=r$. Il teorema garantisce che  
+$$
+min\lVert \mathbf{A}-\mathbf{B}\rVert_2^2 \equiv \lVert \mathbf{A}-\mathbf{A}_r \rVert_2^2
+$$  
+o, equivalentemente,  
+$$
+min\lVert \mathbf{A}-\mathbf{B}\rVert_F^2 \equiv \lVert \mathbf{A}-\mathbf{A}_r \rVert_F^2
+$$  
+con $\mathbf{A}_r=\sum_{i=1}^r\sigma_i\mathbf{u}_i\mathbf{v}_i^T$. Questa versione della SVD è chiamata **Truncated SVD** (figura 3). 
+
+L'errore che si commette considerando $\mathbf{A}_r$ invece di $\mathbf{A}$ è dato da:  
+$$
+\epsilon = \lVert \mathbf{A}-\mathbf{A}_r \rVert^2_2=\sigma_{r+1}^2
+$$  
+o, equivalentemente,  
+$$
+\epsilon = \lVert \mathbf{A}-\mathbf{A}_r \rVert^2_F=\sum_{j=r+1}^k\sigma_{r+1}^2
+$$  
+
+## Geometria della Decomposizione a Valori Singolari in $\mathbb{R}^2$ 
+Qualsiasi matrice $\mathbf{A}\in \mathbb{R}^{n\times m}$ è associata ad una trasformazione lineare da $\mathbb{R}^m$ a $\mathbb{R}^n$. La Decomposizione a Valori Singolari permette, quindi, di scomporre questa trasformazione in una composizione di tre trasformazioni geometriche: una rotazione, una scalatura ed un'altra rotazione.
+Per comprendere come agiscono geometricamente le matrici $\mathbf{U},\mathbf{\Sigma}$ e $\mathbf{V}^T$, si consideri $\mathbf{A}\in \mathbb{R}^{2\times2}$, con $rank(\mathbf{A}=2)$ e $\mathbf{x}\in \mathbb{R}^2 \mbox{ t.c } \lVert \mathbf{x} \rVert =1$ (figura 4).   
+Applicando la SVD su $\mathbf{A}$ si avranno le seguenti matrici:
+$$
+\mathbf{U}=[u_1|u_2]
+$$
+$$
+\mathbf{V}=[v_1|v_2]
+$$
+$$
+\mathbf{\Sigma}=\begin{bmatrix} \sigma_1 & 0 \\ 0 & \sigma_2 \\ \end{bmatrix}
+$$
+Si consideri $\mathbf{Ax}=\mathbf{U\Sigma V}^T\mathbf{x}$.  
+Passo 1: $\mathbf{z}=\mathbf{V}^T\mathbf{x}$. $\mathbf{V}$ è una matrice ortogonale, questo vuol dire che, moltiplicata per $\mathbf{x}$, non cambia il suo modulo ($\lVert \mathbf{z}\rVert_2=\lVert \mathbf{x}\rVert_2$), ma effettua solo una rotazione del vettore. Con $\mathbf{z}=\begin{bmatrix} z_1 \\ z_2 \\ \end{bmatrix}$.  
+Passo 2: $\mathbf{y}=\mathbf{\Sigma z}=\begin{bmatrix} \sigma_1 & 0 \\ 0 & \sigma_2 \\ \end{bmatrix}\begin{bmatrix} z_1 \\ z_2 \\ \end{bmatrix}=\begin{bmatrix} \sigma_1 z_1 \\ \sigma_2 z_2 \\ \end{bmatrix}$. $\mathbf{\Sigma}$ allunga o accorcia le componenti di $\mathbf{z}$ di una quantità che dipende dai valori singolari ($\sigma_1$ avrà un contributo maggiore o uguale di $\sigma_2$, poiché $\sigma_1\ge \sigma_2$).    
+Passo 3: $\mathbf{b=Uy}$. $\mathbf{U}$ è una matrice ortogonale e quindi, effettua solo una rotazione di $\mathbf{y}$.
+
+```{r echo=FALSE, out.width="80%", fig.align='center', fig.cap="Visualizzazione geometrica dell'applicazione delle tre matrici $\\mathbf{U}$, $\\mathbf{\\Sigma}$ e $\\mathbf{V}$."}
+knitr::include_graphics("images/geometria_svd.png")
+```
+
+
+
+# Applicazioni della Decomposizione a Valori Singolari   
+## Compressione di immagini
+Un'immagine grande $n\times m$ può essere rappresentata da una o più matrici di dimensioni $n\times m$ in cui ogni cella $(i,j)$ memorizza l'intensità di colore del pixel $(i,j)$. Il valore che può assumere ogni cella dipende dal modello di colore che si utilizza, ossia una rappresentazione dei colori in forma numerica con tipicamente 3 o 4 valori o componenti cromatiche. Il modello di colore più diffuso è il modello RGB che tiene in considerazione l'intensità del rosso, del verde e del blu dei pixel utilizzando un numero intero compreso tra 0 (assenza del colore) e 255 (intensità massima del colore) o, normalizzando, valori tra 0 e 1. Questi tre colori, miscelati tra loro, coprono quasi tutto lo spazio dei colori visibile.  
+Quindi, un'immagine in bianco e nero può essere rappresentata da una matrice in cui ogni cella memorizza l'intensità di grigio nel corrispondente pixel. Mentre, un'immagine a colori può essere rappresentata da tre matrici, una per il colore rosso, una per il colore verde ed una per il colore blu, e ogni cella $(i,j)$ delle matrici memorizza l'intensità, rispettivamente, di rosso, di verde e di blu nel pixel $(i,j)
+La Decomposizione a Valori Singolari può essere utilizzata per effettuare una compressione di un'immagine. Per semplicità, si consideri un'immagine in bianco e nero di dimensione $n \times m$. Come detto in precedenza, questa può essere rappresentata da una matrice $\mathbf{A}\in \mathbb{R}^{n\times m}$ (ogni cella avrà un valore compreso tra 0 e 1). La compressione può essere effettuata applicando la truncated SVD su $\mathbf{A}$ e considerando solo i primi $r<k$ valori singolari, dove $k=Rank(A)$.
+
+##Testo ##Immagini 
+
+
+## Pseudoinversa e Metodo dei Minimi Quadrati \## PCA
+
+# SVD in R  
+La Decomposizione a Valori Singolari può essere facilmente calcolata in R attraverso utilizzando la funzione svd() o La.svd(). Entrambe le funzioni utilizzando LAPACK (Linear Algebra PACKage), ossia una libreria, scritta in Fortran 90, per la risoluzione di problemi di algebra lineare numerica. Alcune routine che fornisce sono: la risoluzione di sistemi di equazioni lineari, risoluzioni ai minimi quadrati di sistemi di equazioni lineari e decomposizioni come SVD, LU, QR, Cholesky e Schur.  
+## Funzione svd()
+La funzione svd() offerta da R si presenta con la seguente intestazione:
+svd(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)  
+Dove:  
+
+  * x:  una matrice numerica o complessa di cui si vuole calcolare la decomposizione SVD. Le matrici logiche vengono forzate a numeriche;  
+  * nu: numero di vettori singolari sinistri da calcolare. Deve essere compreso tra 0 e il numero di righe di     della matrice. Di default, il valore è uguale al minimo tra il numero delle righe e il numero delle colonne;  
+  * nv: numero di vettori singolari destri da calcolare. Deve essere compreso tra 0 e il numero di colonne di della matrice. Di default, il valore è uguale al minimo tra il numero delle righe e il numero delle colonne.
+  * LINPACK: valore booleano utilizzato per risolvere alcuni problemi di compatibilità con vecchie versionid i R.
+  
+  Questa funzione ritorna una lista contenente:  
+  * $d: vettore contente i valori singolari della matrice;  
+  * $u: matrice le cui colonne sono i vettori singolari sinistri della Decomposizione a Valori Singolari;  
+  * $v: matrice le cui colonne sono i vettori singolari destri della Decomposizione a Valori Singolari.  
+
+## Funzione La.svd()  
+  La funzione La.svd() si presenta con la seguente intestazione:  
+  svd(x, nu = min(n, p), nv = min(n, p))  
+  Dove i parametri x, nu e nv sono gli stessi di svd() descritta precedentemente. L'unica differenza tra le due funzioni è che La.svd() sostituisce \$v con \$vt, ossia la matrice le cui righe sono i vettori singolari destri.
+  
+
+
+
+##Implementazione della SVD, Compact SVD e Truncated SVD
+Di seguito è riportata le implementazioni della Decomposizione a Valori singolari classica, della Compact SVD e della Truncated SVD.  
+
+La libreria Matrix è necessaria per il calcolo del rank della matrica $\mathbf{A}$.
+```{r}
+library(Matrix)
+set.seed(5)    
+A <- matrix(sample(-100:100,
+                   21,
+                   replace=TRUE),
+            ncol=7)
+print(A)
+```
+
+```{r Implementazione SVD, Compact SVD e Truncated SVD}
+singular_value_decomposition <- function(A) {
+  k = rankMatrix(A)
+  #Inizializzazione di Sigma
+  Sigma <- matrix(0, nrow(A), ncol(A))
+
+  ATA <- t(A) %*% A
+  AAT <- A %*% t(A)
+  
+  #Calcolo di V
+  eigenATA <- eigen(ATA)
+  #Ogni colonna della matrice degli autovettori corrisponde ad un autovettore
+  V <- eigenATA$vectors
+  
+  #Calcolo di U
+  eigenAAT <- eigen(AAT)
+  U <- eigenAAT$vectors
+  
+  #Calcolo di Sigma
+  #Gli autovalori ritornati sono in ordine decrescente. 
+  #Si considerano i primi k autovalori
+  eigenValAAT <- eigenAAT$values[0:k]
+  sigmas <- sqrt(eigenValAAT)
+  SigmaK <- sigmas * diag(length(sigmas))
+  Sigma[0:nrow(SigmaK), 0:ncol(SigmaK)] <- SigmaK
+
+  return <- list(U=U , Sigma=Sigma, V=V)
+}
+
+compact_svd <- function(A) {
+  k = rankMatrix(A)
+  
+  ATA <- t(A) %*% A
+  
+  #Calcolo di Vk
+  eigenATA <- eigen(ATA)
+  Vk <- eigenATA$vectors[, 0:k]
+  
+  #Calcolo di Sigmak
+  eigenValATA <- eigenATA$values[0:k]
+  sigmas <- sqrt(eigenValATA)
+  Sigmak <- sigmas * diag(length(sigmas))
+  
+  #Calcolo Uk
+  Uk <- A %*% Vk %*% solve(Sigmak)
+  
+  return <- list(U=Uk , Sigma=Sigmak, V=Vk)
+}
+
+truncated_svd <- function(A, r) {
+  ATA <- t(A) %*% A
+  
+  #Calcolo di Vr
+  eigenATA <- eigen(ATA)
+  Vr <- eigenATA$vectors[, 0:r]
+  
+  
+  #Calcolo di Sigma
+  #Si considerano i primi r autovalori
+  eigenValATA <- eigenATA$values[0:r]
+  sigmas <- sqrt(eigenValATA)
+  Sigmar <- sigmas * diag(length(sigmas))
+  
+  #Calcolo di Ur
+  Ur <- A %*% Vr %*% solve(Sigmar)
+  
+  return <- list(U=Ur , Sigma=Sigmar, V=Vr)
+}
+```
+
+Per la Truncated SVD è stato scelto un numero di valori singolari pari al $rank(\mathbf{A})-1$.
+```{r Applicazione SVD}
+SVD <- singular_value_decomposition(A)
+A_SVD <- SVD$U %*% SVD$Sigma %*% t(SVD$V) 
+
+compactSVD <- compact_svd(A)
+A_compactSVD <- compactSVD$U %*% compactSVD$Sigma %*% t(compactSVD$V) 
+
+truncatedSVD <- truncated_svd(A, rankMatrix(A)-1)
+A_truncatedSVD <- truncatedSVD$U %*% truncatedSVD$Sigma %*% t(truncatedSVD$V) 
+
+
+all.equal(A, A_SVD)
+all.equal(A, A_compactSVD)
+
+```
+
+
+L'errore in norma 2 che si commette considerando $\mathbf{A\_truncatedSVD}$ al posto di $\mathbf{A}$ è:
+```{r Errore norma 2}
+err_norm2 = norm(A-A_truncatedSVD, type="2")**2
+err_norm2
+```
+
+### Applicazione della SVD sulle immagini in R
+Di seguito viene utilizzato il package jpeg, il quale fornisce funzioni utili come la lettura e la scrittura di file .jpeg e la trasformazione di una foto in una matrice o tensore, a seconda del numero di canali presi in considerazione
+```{r Lettura foto}
+library(jpeg)
+foto <- readJPEG('images/foto.jpg')
+```
+readJPEG legge un'immagine jpeg e la trasforma in un tensore $altezza\times larghezza\times canali$. Ogni cella rappresenterà un pixel e memorizzerà un valore compreso tra 0 e 1, il quale rappresenterà la quantità di rosso, verde o blu nel pixel.
+```{r SVD dei canali}
+r <- foto[ , , 1]
+g <- foto[ , , 2]
+b <- foto[ , , 3]
+
+r.rank <- rankMatrix(r)
+g.rank <- rankMatrix(g)
+b.rank <- rankMatrix(b)
+
+sprintf("Rank della matrice relativa al canale rosso: %i", r.rank)
+sprintf("Rank della matrice relativa al canale verde: %i", g.rank)
+sprintf("Rank della matrice relativa al canale blu: %i", b.rank)
+
+foto.r.svd <- svd(r)
+foto.g.svd <- svd(g)
+foto.b.svd <- svd(b)
+
+rgb.svds <- list(foto.r.svd, foto.g.svd, foto.b.svd)
+```
+Viene applicata la SVD sulle tre matrici che rappresentano i tre canali di colore della foto.
+```{r}
+num_sigma <- c(3, 5, 10, 25, 35, 70)
+for (r in num_sigma) {
+  foto_compressa <- sapply(rgb.svds, function(i) {
+    foto_troncata <- i$u[,1:r] %*% diag(i$d[1:r]) %*% t(i$v[,1:r])
+  }, simplify = 'array')
+  
+  writeJPEG(foto_compressa, paste('images/foto_compressa/foto_compressa_con_', r, '_sigma.jpg', sep=''))
+}
+```
+La foto è stata compressa 7 volte, variando il numero di valori singolari che si tengono in considerazione nella Truncated SVD. Di seguito vengono riportate le foto compresse. Come si può notare dalle foto, utilizzando più o meno 70 valori singolari, la foto compressa è molto simile a quella originale che ha un rank pari a 1013 sui tre canali di colore.
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto originale."}
+knitr::include_graphics("images/foto.jpg")
+```
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto compressa con 3 Valori Singolari."}
+knitr::include_graphics("images/foto_compressa/foto_compressa_con_3_sigma.jpg")
+```
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto compressa con 5 Valori Singolari."}
+knitr::include_graphics("images/foto_compressa/foto_compressa_con_5_sigma.jpg")
+```
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto compressa con 10 Valori Singolari."}
+knitr::include_graphics("images/foto_compressa/foto_compressa_con_10_sigma.jpg")
+```
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto compressa con 25 Valori Singolari."}
+knitr::include_graphics("images/foto_compressa/foto_compressa_con_25_sigma.jpg")
+```
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto compressa con 35 Valori Singolari."}
+knitr::include_graphics("images/foto_compressa/foto_compressa_con_35_sigma.jpg")
+```
+```{r echo=FALSE, out.width="50%", fig.align='center', fig.cap="Foto compressa con 70 Valori Singolari."}
+knitr::include_graphics("images/foto_compressa/foto_compressa_con_70_sigma.jpg")
+```
+
+

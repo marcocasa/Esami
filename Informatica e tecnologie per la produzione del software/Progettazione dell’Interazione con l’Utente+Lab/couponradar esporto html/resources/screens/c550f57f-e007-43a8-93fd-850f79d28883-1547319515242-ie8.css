@@ -1,0 +1,55 @@
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Ellipse_1 {
+  rotation: 0.0;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Text_1 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Image_14 {
+  -ms-filter:  progid:DXImageTransform.Microsoft.Matrix(SizingMethod = 'auto expand',M11=0.573576436351046,M12=0.8191520442889918,M21=-0.8191520442889918,M22=0.573576436351046);
+  filter:  progid:DXImageTransform.Microsoft.Matrix(SizingMethod = 'auto expand',M11=0.573576436351046,M12=0.8191520442889918,M21=-0.8191520442889918,M22=0.573576436351046);
+  margin-left: -20px;
+  margin-top: -20px;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Text_3 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Rectangle_1 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Rettangolo_evento {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 #s-Image_43 {
+  -ms-filter: ;
+  filter: ;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.devMobile #jim-container .ui-page {
+  overflow-x: hidden;
+}
+.non_jim_mobile #simulation {
+  overflow-x: hidden;
+}
+.web #simulation {
+  overflow-x: hidden;
+}
+#s-c550f57f-e007-43a8-93fd-850f79d28883 > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}

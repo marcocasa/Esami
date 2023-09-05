@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "419801601838",
+    "firebase_url": "https://tourapp-swag.firebaseio.com",
+    "project_id": "tourapp-swag",
+    "storage_bucket": "tourapp-swag.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419801601838:android:beda654b1680d9ab",
+        "android_client_info": {
+          "package_name": "it.uniba.di.sms1819.tourapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419801601838-vn09kh9pfunpeooaodh3n301sroor4fe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "it.uniba.di.sms1819.tourapp",
+            "certificate_hash": "70f3c739dbad6a75f99edadd996379e5e53ee5f9"
+          }
+        },
+        {
+          "client_id": "419801601838-usg51ametv726ikp2ft2bes5jb92c4b3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAevzipp8Niw0NHDghXYeF3j3Zhl6bn2dw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419801601838-usg51ametv726ikp2ft2bes5jb92c4b3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

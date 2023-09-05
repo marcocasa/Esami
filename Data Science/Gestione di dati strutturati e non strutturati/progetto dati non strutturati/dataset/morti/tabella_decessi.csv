@@ -1,0 +1,43 @@
+id_decessi,nome_malattia,numero_decessi_maschi,numero_decessi_femmine,anno,provincia
+1,malattie dell'apparato genitourinario,56,73,2020,4
+2,malattie del sistema osteomuscolare e del tessuto connettivo,1,17,2020,4
+3,"malattie endocrine, nutrizionali e metaboliche",152,202,2020,4
+4,malattie dell'apparato digerente,105,97,2020,4
+5,malattie del sistema respiratorio,256,185,2020,4
+6,tumori maligni,822,620,2020,4
+7,malattie del sistema circolatorio,979,1243,2020,4
+8,malattie dell'apparato genitourinario,127,169,2020,3
+9,malattie del sistema osteomuscolare e del tessuto connettivo,14,41,2020,3
+10,"malattie endocrine, nutrizionali e metaboliche",358,481,2020,3
+11,malattie dell'apparato digerente,246,180,2020,3
+12,malattie del sistema respiratorio,486,387,2020,3
+13,tumori maligni,1810,1360,2020,3
+14,malattie del sistema circolatorio,1930,2371,2020,3
+15,malattie dell'apparato genitourinario,29,51,2020,1
+16,malattie del sistema osteomuscolare e del tessuto connettivo,3,13,2020,1
+17,"malattie endocrine, nutrizionali e metaboliche",103,139,2020,1
+18,malattie dell'apparato digerente,61,67,2020,1
+19,tumori maligni,529,393,2020,1
+20,malattie del sistema respiratorio,174,117,2020,1
+21,malattie del sistema circolatorio,506,660,2020,1
+22,malattie dell'apparato genitourinario,59,73,2020,2
+23,malattie del sistema osteomuscolare e del tessuto connettivo,14,22,2020,2
+24,"malattie endocrine, nutrizionali e metaboliche",212,281,2020,2
+25,malattie dell'apparato digerente,121,116,2020,2
+26,malattie del sistema respiratorio,262,199,2020,2
+27,tumori maligni,886,660,2020,2
+28,malattie del sistema circolatorio,1113,1365,2020,2
+29,malattie dell'apparato genitourinario,40,51,2020,5
+30,malattie del sistema osteomuscolare e del tessuto connettivo,8,14,2020,5
+31,"malattie endocrine, nutrizionali e metaboliche",114,135,2020,5
+32,malattie dell'apparato digerente,79,66,2020,5
+33,malattie del sistema respiratorio,185,161,2020,5
+34,tumori maligni,570,405,2020,5
+35,malattie del sistema circolatorio,615,857,2020,5
+36,malattie dell'apparato genitourinario,92,106,2020,6
+37,malattie del sistema osteomuscolare e del tessuto connettivo,9,35,2020,6
+38,"malattie endocrine, nutrizionali e metaboliche",198,294,2020,6
+39,malattie dell'apparato digerente,162,170,2020,6
+40,malattie del sistema respiratorio,457,362,2020,6
+41,tumori maligni,1285,925,2020,6
+42,malattie del sistema circolatorio,1314,1743,2020,6

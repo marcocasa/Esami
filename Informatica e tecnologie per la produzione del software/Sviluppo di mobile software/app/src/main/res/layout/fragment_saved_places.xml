@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/space_20"
+        android:paddingTop="20dp"
+        android:paddingRight="@dimen/space_20"
+        android:scrollbars="vertical"
+        android:layoutAnimation="@anim/layout_animation_fall_down"
+        android:scrollingCache="true" />
+
+    <TextView
+        android:id="@+id/no_place_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_place_added"
+        android:visibility="gone" />
+
+</RelativeLayout>
